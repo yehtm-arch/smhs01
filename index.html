@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花蓮海星高中 - 115級校外教學互動手冊</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FFD166',
+                            blue: '#118AB2',
+                            green: '#06D6A0',
+                            red: '#EF476F',
+                            dark: '#073B4C',
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F0F9FF;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .checklist-item.checked {
+            background-color: #E6FFFA;
+            border-color: #06D6A0;
+            opacity: 0.7;
+        }
+        .checklist-item.checked span {
+            text-decoration: line-through;
+            color: #888;
+        }
+    </style>
+</head>
+<body class="text-brand-dark font-sans h-screen flex flex-col overflow-hidden">
+
+    <!-- Header Section -->
+    <header class="bg-brand-blue text-white p-4 shadow-lg z-10 rounded-b-3xl shrink-0">
+        <div class="flex justify-between items-center mb-2">
+            <div>
+                <h1 class="text-xl font-bold tracking-wider">花蓮海星高中</h1>
+                <p class="text-sm opacity-90">115級 高中部校外教學</p>
+            </div>
+            <div class="text-right">
+                <div class="bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                    <span class="text-sm font-bold">1/20 - 1/23</span>
+                </div>
+            </div>
+        </div>
+        <!-- Countdown or Status -->
+        <div class="bg-white/10 rounded-lg p-2 text-center mt-2">
+            <p id="countdown-text" class="text-sm font-medium animate-pulse">旅程準備開始！</p>
+        </div>
+    </header>
+
+    <!-- Main Content Area (Scrollable) -->
+    <main class="flex-1 overflow-y-auto p-4 pb-24 space-y-4 no-scrollbar bg-slate-50" id="main-container">
+        
+        <!-- Welcome / Home Tab -->
+        <div id="tab-home" class="tab-content active space-y-6">
+            <div class="bg-brand-yellow rounded-2xl p-6 text-center card-shadow relative overflow-hidden group hover:scale-[1.02] transition-transform">
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 bg-white/30 w-24 h-24 rounded-full"></div>
+                <i class="ph-fill ph-bus text-6xl text-brand-dark mb-2 inline-block"></i>
+                <h2 class="text-2xl font-bold mb-2 text-brand-dark">準備好出發了嗎？</h2>
+                <p class="text-lg font-medium">快樂出門，平安回家！</p>
+                <div class="mt-4 bg-white/50 rounded-lg p-3 text-left">
+                    <p class="font-bold flex items-center text-lg"><i class="ph-fill ph-clock-alarm mr-2 text-brand-red"></i> 集合資訊</p>
+                    <p class="text-xl mt-1 font-bold pl-7">05:40 學校集合 / 06:10 出發</p>
+                </div>
+            </div>
+
+            <!-- Weather Widget Mock -->
+            <div class="bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl p-5 text-white card-shadow">
+                <h3 class="font-bold text-lg mb-3 border-b border-white/30 pb-2">目的地天氣預報</h3>
+                <div class="flex justify-between text-center">
+                    <div>
+                        <p class="text-sm opacity-90">高雄</p>
+                        <i class="ph-fill ph-sun text-3xl my-1 text-yellow-300"></i>
+                        <p class="font-bold">24°C</p>
+                    </div>
+                    <div>
+                        <p class="text-sm opacity-90">嘉義</p>
+                        <i class="ph-fill ph-cloud-sun text-3xl my-1"></i>
+                        <p class="font-bold">22°C</p>
+                    </div>
+                    <div>
+                        <p class="text-sm opacity-90">台中</p>
+                        <i class="ph-fill ph-cloud text-3xl my-1"></i>
+                        <p class="font-bold">20°C</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notice Card -->
+            <div class="bg-brand-red/10 border-l-4 border-brand-red rounded-xl p-4">
+                <h3 class="text-brand-red font-bold text-lg flex items-center">
+                    <i class="ph-fill ph-warning-circle mr-2"></i> 重要提醒
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-700">
+                    因應環保政策，飯店<span class="font-bold text-brand-red">不再提供一次性盥洗用品</span>。請務必攜帶牙刷、牙膏、毛巾等個人用品！
+                </p>
+            </div>
+        </div>
+
+        <!-- Itinerary Tab -->
+        <div id="tab-schedule" class="tab-content space-y-4">
+            <h2 class="text-2xl font-bold text-brand-dark pl-2 border-l-4 border-brand-blue">行程總覽</h2>
+            
+            <!-- Day 1 -->
+            <div class="bg-white rounded-2xl p-4 card-shadow">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="bg-brand-blue text-white px-3 py-1 rounded-full text-sm font-bold">Day 1 (01/20)</span>
+                    <span class="text-gray-500 font-medium">高雄之旅</span>
+                </div>
+                <div class="space-y-6 relative pl-4 border-l-2 border-gray-200 ml-2">
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-blue rounded-full border-2 border-white"></div>
+                        <span class="text-brand-blue font-bold font-mono text-sm block mb-1">05:40 - 06:10</span>
+                        <p class="font-bold text-lg">學校集合 / 準時出發</p>
+                        <p class="text-sm text-gray-500">快樂出遊，欣賞沿途風光</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <span class="text-gray-500 font-bold font-mono text-sm block mb-1">12:50 - 13:40</span>
+                        <p class="font-bold text-lg">餐廳午餐</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <span class="text-gray-500 font-bold font-mono text-sm block mb-1">14:50 - 16:00</span>
+                        <div class="flex items-center flex-wrap">
+                            <p class="font-bold text-lg mr-2">勝利新村</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=屏東勝利星村創意生活園區" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-brand-blue/10 text-brand-blue hover:bg-brand-blue hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500">打卡新去處 or 駁二藝術特區</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-yellow rounded-full border-2 border-white"></div>
+                        <span class="text-brand-yellow font-bold font-mono text-sm block mb-1">18:00 - 19:30</span>
+                        <div class="flex items-center flex-wrap">
+                            <p class="font-bold text-lg mr-2">六合夜市</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=高雄六合夜市" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-brand-blue/10 text-brand-blue hover:bg-brand-blue hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                    </div>
+                     <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-yellow rounded-full border-2 border-white"></div>
+                        <span class="text-brand-yellow font-bold font-mono text-sm block mb-1">19:30 - 21:00</span>
+                        <p class="font-bold text-lg">飯店自助吧</p>
+                        <p class="text-sm text-gray-500">豐富菜色吃到飽 (擔仔麵、關東煮等)</p>
+                    </div>
+                </div>
+                <div class="mt-4 bg-blue-50 p-3 rounded-xl flex items-start">
+                    <i class="ph-fill ph-bed text-2xl text-brand-blue mr-3 mt-1"></i>
+                    <div class="w-full">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm text-gray-500 font-bold">21:00 入住</p>
+                                <p class="text-lg font-bold text-brand-dark">康橋大飯店七賢旗艦館</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=高雄市新興區同愛街30號" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-white text-brand-blue border border-brand-blue/20 hover:bg-brand-blue hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">高雄市新興區同愛街30號</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="bg-white rounded-2xl p-4 card-shadow">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="bg-brand-green text-white px-3 py-1 rounded-full text-sm font-bold">Day 2 (01/21)</span>
+                    <span class="text-gray-500 font-medium">樂園狂歡</span>
+                </div>
+                <div class="space-y-6 relative pl-4 border-l-2 border-gray-200 ml-2">
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <span class="text-gray-500 font-bold font-mono text-sm block mb-1">07:00 / 07:30</span>
+                        <p class="font-bold text-lg">晨喚 / 早餐時光</p>
+                        <p class="text-sm text-gray-500">07:30 - 09:00 用餐</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-green rounded-full border-2 border-white"></div>
+                        <span class="text-brand-green font-bold font-mono text-sm block mb-1">09:40 - 15:30</span>
+                        <div class="flex items-center flex-wrap">
+                            <p class="font-bold text-lg mr-2">義大遊樂世界</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=義大遊樂世界" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-brand-green/10 text-brand-green hover:bg-brand-green hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500">午餐敬請自理</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <span class="text-gray-500 font-bold font-mono text-sm block mb-1">17:00 - 19:30</span>
+                        <div class="flex items-center flex-wrap">
+                            <p class="font-bold text-lg mr-2">嘉義文化路觀光夜市</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=嘉義文化路夜市" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-brand-green/10 text-brand-green hover:bg-brand-green hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500">晚餐敬請自理</p>
+                    </div>
+                </div>
+                <div class="mt-4 bg-green-50 p-3 rounded-xl flex items-start">
+                    <i class="ph-fill ph-bed text-2xl text-brand-green mr-3 mt-1"></i>
+                    <div class="w-full">
+                        <div class="flex justify-between items-start">
+                             <div>
+                                <p class="text-sm text-gray-500 font-bold">20:00 入住</p>
+                                <p class="text-lg font-bold text-brand-dark">嘉義皇品酒店</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=嘉義市西區自由路468號" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-white text-brand-green border border-brand-green/20 hover:bg-brand-green hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">嘉義市西區自由路468號</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Day 3 -->
+             <div class="bg-white rounded-2xl p-4 card-shadow">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="bg-brand-red text-white px-3 py-1 rounded-full text-sm font-bold">Day 3 (01/22)</span>
+                    <span class="text-gray-500 font-medium">嘉義 - 台中</span>
+                </div>
+                <div class="space-y-6 relative pl-4 border-l-2 border-gray-200 ml-2">
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-red rounded-full border-2 border-white"></div>
+                        <span class="text-brand-red font-bold font-mono text-sm block mb-1">07:00 / 07:30</span>
+                        <p class="font-bold text-lg">晨喚 / 早餐時光</p>
+                        <p class="text-sm text-gray-500">07:30 - 09:00 用餐</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <span class="text-gray-500 font-bold font-mono text-sm block mb-1">09:30 - 10:30</span>
+                        <div class="flex items-center flex-wrap">
+                            <p class="font-bold text-lg mr-2">檜意森活村</p>
+                             <a href="https://www.google.com/maps/search/?api=1&query=嘉義檜意森活村" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-brand-red/10 text-brand-red hover:bg-brand-red hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500">體驗日式建築聚落風情</p>
+                    </div>
+                </div>
+                <div class="mt-4 bg-red-50 p-3 rounded-xl flex items-start">
+                    <i class="ph-fill ph-bed text-2xl text-brand-red mr-3 mt-1"></i>
+                    <div class="w-full">
+                        <div class="flex justify-between items-start">
+                            <p class="text-sm text-gray-500 font-bold">住宿飯店</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=臺中市西屯區臺灣大道二段689號" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-white text-brand-red border border-brand-red/20 hover:bg-brand-red hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-lg font-bold text-brand-dark">永豐棧酒店</p>
+                        <p class="text-sm text-gray-600">臺中市西屯區臺灣大道二段689號</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="bg-white rounded-2xl p-4 card-shadow">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="bg-brand-yellow text-brand-dark px-3 py-1 rounded-full text-sm font-bold">Day 4 (01/23)</span>
+                    <span class="text-gray-500 font-medium">快樂賦歸</span>
+                </div>
+                <div class="space-y-6 relative pl-4 border-l-2 border-gray-200 ml-2">
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-yellow rounded-full border-2 border-white"></div>
+                        <span class="text-brand-yellow font-bold font-mono text-sm block mb-1">07:00 / 07:30</span>
+                        <p class="font-bold text-lg">晨喚 / 享用美味早餐</p>
+                        <p class="text-sm text-gray-500">07:30 - 08:30 用餐</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white"></div>
+                        <span class="text-gray-500 font-bold font-mono text-sm block mb-1">09:30 - 13:30</span>
+                        <div class="flex items-center flex-wrap">
+                            <p class="font-bold text-lg mr-2">麗寶樂園 + Outlet</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=麗寶樂園" target="_blank" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-brand-yellow/10 text-brand-dark hover:bg-brand-yellow hover:text-white transition-colors">
+                                <i class="ph-bold ph-navigation-arrow mr-1"></i> 導航
+                            </a>
+                        </div>
+                        <p class="text-sm text-gray-500">探索樂園與購物樂趣</p>
+                        <span class="inline-block mt-1 text-xs font-bold text-white bg-brand-red/80 px-2 py-1 rounded">午餐：中式餐盒</span>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-blue rounded-full border-2 border-white"></div>
+                        <span class="text-brand-blue font-bold font-mono text-sm block mb-1">16:20 - 17:31</span>
+                        <p class="font-bold text-lg">搭乘火車 (莒光 6254次)</p>
+                        <p class="text-sm text-gray-500">蘇澳新站 <i class="ph-bold ph-arrow-right mx-1"></i> 花蓮站</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[21px] top-1 w-3 h-3 bg-brand-green rounded-full border-2 border-white"></div>
+                        <span class="text-brand-green font-bold font-mono text-sm block mb-1">17:30~</span>
+                        <p class="font-bold text-lg">快樂賦歸</p>
+                        <p class="text-sm text-gray-500">返回可愛的家</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist Tab -->
+        <div id="tab-checklist" class="tab-content space-y-4">
+            <h2 class="text-2xl font-bold text-brand-dark pl-2 border-l-4 border-brand-green">行李檢查表</h2>
+            
+            <!-- Progress Bar -->
+            <div class="bg-white p-4 rounded-xl card-shadow">
+                <div class="flex justify-between text-sm font-bold mb-2">
+                    <span>準備進度</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div id="progress-bar" class="bg-brand-green h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <p class="text-xs text-gray-500 mt-2 text-center">點擊項目即可標記完成</p>
+            </div>
+
+            <!-- List Groups -->
+            <div class="space-y-3" id="checklist-container">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+
+        <!-- Guidelines Tab -->
+        <div id="tab-rules" class="tab-content space-y-4">
+            <h2 class="text-2xl font-bold text-brand-dark pl-2 border-l-4 border-brand-yellow">活動須知</h2>
+            
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Hotel Rules -->
+                <div class="bg-white rounded-2xl p-5 card-shadow border-t-4 border-brand-blue">
+                    <h3 class="font-bold text-xl mb-3 flex items-center">
+                        <i class="ph-fill ph-house-line text-brand-blue mr-2"></i> 飯店住宿須知
+                    </h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-check-circle text-green-500 mr-2 mt-1 shrink-0"></i>
+                            <span>走動輕聲細語，維護住宿品質。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-prohibit text-red-500 mr-2 mt-1 shrink-0"></i>
+                            <span>嚴禁更換房間、串門子或喧嘩。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-warning text-yellow-500 mr-2 mt-1 shrink-0"></i>
+                            <span>注意安全，<span class="font-bold text-red-500">請勿在床上彈跳</span>。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-television text-blue-500 mr-2 mt-1 shrink-0"></i>
+                            <span>請勿隨意搬動電視。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-towel text-purple-500 mr-2 mt-1 shrink-0"></i>
+                            <span>用過的毛巾請放回浴室，勿放床上。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dining Rules -->
+                <div class="bg-white rounded-2xl p-5 card-shadow border-t-4 border-brand-yellow">
+                    <h3 class="font-bold text-xl mb-3 flex items-center">
+                        <i class="ph-fill ph-fork-knife text-brand-yellow mr-2"></i> 用餐與購物
+                    </h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-check-circle text-green-500 mr-2 mt-1 shrink-0"></i>
+                            <span>依桌次就坐，保持肅靜，注意禮儀。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-hamburger text-orange-500 mr-2 mt-1 shrink-0"></i>
+                            <span>適量飲食，避免過飽或空腹導致暈車。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ph-bold ph-shopping-bag text-pink-500 mr-2 mt-1 shrink-0"></i>
+                            <span>購買名產請貨比三家，注意新鮮度。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bg-white border-t border-gray-200 fixed bottom-0 w-full z-20 pb-safe">
+        <div class="flex justify-around items-center h-16">
+            <button onclick="switchTab('home')" class="nav-btn active flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-blue transition-colors" data-target="home">
+                <i class="ph-fill ph-house text-2xl mb-1"></i>
+                <span class="text-xs font-bold">首頁</span>
+            </button>
+            <button onclick="switchTab('schedule')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-blue transition-colors" data-target="schedule">
+                <i class="ph-fill ph-calendar-check text-2xl mb-1"></i>
+                <span class="text-xs font-bold">行程</span>
+            </button>
+            <button onclick="switchTab('checklist')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-blue transition-colors" data-target="checklist">
+                <i class="ph-fill ph-backpack text-2xl mb-1"></i>
+                <span class="text-xs font-bold">行李</span>
+            </button>
+            <button onclick="switchTab('rules')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-brand-blue transition-colors" data-target="rules">
+                <i class="ph-fill ph-book-open text-2xl mb-1"></i>
+                <span class="text-xs font-bold">須知</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // Data for Checklist
+        const packingList = [
+            {
+                category: "必備證件與財物",
+                items: ["個人證件 (身分證/健保卡)", "餐費 + 適量零錢", "回家的鑰匙"]
+            },
+            {
+                category: "衣物與穿戴",
+                items: ["換洗衣物 (3-4套)", "便利雨衣", "帽子 / 防曬用品", "塑膠袋 (裝換洗衣物用)"]
+            },
+            {
+                category: "個人衛生與防疫",
+                items: ["盥洗用具 (牙刷、牙膏)", "口罩 (8個以上)", "手帕 / 衛生紙", "防蚊液", "私人藥品 (暈車/感冒藥)"]
+            },
+            {
+                category: "其他裝備",
+                items: ["大型行李袋/箱", "個人隨身雙肩背包", "紙、筆、手冊"]
+            }
+        ];
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChecklist();
+            updateCountdown();
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Show target tab
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            // Update Nav Buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-blue', 'text-brand-yellow');
+                btn.classList.add('text-gray-400');
+                if(btn.dataset.target === tabId) {
+                    btn.classList.remove('text-gray-400');
+                    btn.classList.add('text-brand-blue');
+                }
+            });
+
+            // Reset scroll
+            document.getElementById('main-container').scrollTop = 0;
+        }
+
+        // Render Checklist
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            container.innerHTML = '';
+            
+            let totalItems = 0;
+
+            packingList.forEach((group, groupIndex) => {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'bg-white rounded-xl p-4 card-shadow';
+                
+                const title = document.createElement('h3');
+                title.className = 'font-bold text-lg mb-3 text-brand-dark border-b pb-2';
+                title.textContent = group.category;
+                groupDiv.appendChild(title);
+
+                group.items.forEach((item, itemIndex) => {
+                    totalItems++;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'checklist-item flex items-center p-3 rounded-lg border border-gray-100 mb-2 cursor-pointer transition-all active:scale-95';
+                    itemDiv.innerHTML = `
+                        <div class="w-6 h-6 rounded border-2 border-brand-green flex items-center justify-center mr-3 bg-white check-box">
+                            <i class="ph-bold ph-check text-white opacity-0 transition-opacity"></i>
+                        </div>
+                        <span class="font-medium text-lg">${item}</span>
+                    `;
+                    
+                    // Toggle check logic
+                    itemDiv.onclick = function() {
+                        this.classList.toggle('checked');
+                        const checkIcon = this.querySelector('.ph-check');
+                        const checkBox = this.querySelector('.check-box');
+                        
+                        if (this.classList.contains('checked')) {
+                            checkIcon.classList.remove('opacity-0');
+                            checkBox.classList.add('bg-brand-green');
+                        } else {
+                            checkIcon.classList.add('opacity-0');
+                            checkBox.classList.remove('bg-brand-green');
+                        }
+                        updateProgress(totalItems);
+                    };
+
+                    groupDiv.appendChild(itemDiv);
+                });
+
+                container.appendChild(groupDiv);
+            });
+            
+            // Set initial Nav state
+            document.querySelector('[data-target="home"]').classList.remove('text-gray-400');
+            document.querySelector('[data-target="home"]').classList.add('text-brand-blue');
+        }
+
+        // Update Progress Bar
+        function updateProgress(total) {
+            const checkedCount = document.querySelectorAll('.checklist-item.checked').length;
+            const percentage = Math.round((checkedCount / total) * 100);
+            
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+            document.getElementById('progress-text').textContent = `${percentage}%`;
+
+            if(percentage === 100) {
+                document.getElementById('progress-bar').classList.add('bg-brand-yellow');
+                document.getElementById('progress-text').textContent = "🎉 準備完成！";
+            } else {
+                document.getElementById('progress-bar').classList.remove('bg-brand-yellow');
+            }
+        }
+
+        // Countdown Logic (Simple)
+        function updateCountdown() {
+            // Target date: Jan 20, 2026
+            const targetDate = new Date('2026-01-20T05:40:00'); 
+            const now = new Date();
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            
+            const el = document.getElementById('countdown-text');
+            if (diff < 0) {
+                // Trip Started
+                const endTrip = new Date('2026-01-23T18:00:00');
+                if (now < endTrip) {
+                    el.textContent = "🚀 旅程進行中，享受每一刻！";
+                    el.className = "text-sm font-bold text-yellow-300 animate-pulse";
+                } else {
+                    el.textContent = "🏠 旅程圓滿結束，歡迎回家！";
+                    el.className = "text-sm font-bold";
+                }
+            } else {
+                el.textContent = `⏳ 距離出發還有 ${days} 天，加油！`;
+            }
+        }
+    </script>
+</body>
+</html>
